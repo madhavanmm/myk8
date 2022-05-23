@@ -9,14 +9,14 @@ pipeline {
         stage('Build the Docker image') {
             steps {
                 sh 'sudo docker build -t newimage /var/lib/jenkins/workspace/kuber'
-                sh 'sudo docker tag newimage iammadhavan/newimage:latest'
-                sh 'sudo docker tag newimage iammadhavan/newimage:${BUILD_NUMBER}'
+                sh 'sudo docker tag newimage madhavanm/newimage:latest'
+                sh 'sudo docker tag newimage madhavamn/newimage:${BUILD_NUMBER}'
             }
         }
         stage('Push the Docker image') {
             steps {
-                sh 'sudo docker image push iammadhavan/newimage:latest'
-                sh 'sudo docker image push iammadhavan/newimage:${BUILD_NUMBER}'
+                sh 'sudo docker image push madhavanm/newimage:latest'
+                sh 'sudo docker image push madhavanm/newimage:${BUILD_NUMBER}'
             }
         }
         stage('Deploy on Kubernetes') {
